@@ -1,22 +1,36 @@
-### Instructions on how to run `install_docker.sh`
+# Docker Installation Script for Ubuntu
 
-## Installing Docker
+This repository contains a script to install Docker on Ubuntu systems. Follow the instructions below to clone the repository and run the installation script.
 
-To install Docker on your Ubuntu system, follow these steps:
+## Cloning the Repository
 
-1. **Download the Installation Script**
+1. **Clone the Repository**
 
-   Ensure you have the `install_docker.sh` script available on your local machine. You can download it or copy it to your working directory.
+   Use the following command to clone the repository:
 
-2. **Make the Script Executable**
+   ```bash
+   git clone https://github.com/shegerbootcamp/install-docker-ubuntu.git
+   ```
 
-   Before running the script, you need to make it executable. Open a terminal and run:
+2. **Navigate to the Repository Directory**
+
+   Change into the directory where the script is located:
+
+   ```bash
+   cd install-docker-ubuntu
+   ```
+
+## Running the Installation Script
+
+1. **Make the Script Executable**
+
+   Ensure that the script has execute permissions:
 
    ```bash
    chmod +x install_docker.sh
    ```
 
-3. **Run the Installation Script**
+2. **Run the Script**
 
    Execute the script to install Docker:
 
@@ -24,38 +38,26 @@ To install Docker on your Ubuntu system, follow these steps:
    ./install_docker.sh
    ```
 
-   The script will:
-   - Update the package list and install necessary prerequisites.
-   - Add Docker's official GPG key.
-   - Add Docker's repository to your APT sources.
-   - Install Docker and related packages.
-   - Create a Docker group if it doesn’t exist.
-   - Add your user to the Docker group.
-   - Switch to the Docker group for the current session.
+3. **Verify Docker Installation**
 
-4. **Verify Docker Installation**
-
-   After running the script, you can verify that Docker is installed correctly by running:
+   After running the script, you can verify that Docker is installed correctly by checking its version:
 
    ```bash
    docker --version
    ```
 
-   This command should return the installed Docker version.
+## Adding User to Docker Group
 
-5. **Restart Your Terminal Session**
+To allow running Docker commands without `sudo`, add your user to the Docker group:
 
-   To apply the group changes, you may need to restart your terminal session. Log out and log back in, or open a new terminal window.
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
 
-6. **Troubleshooting**
+You may need to log out and log back in for these changes to take effect.
 
-   If you encounter any issues with Docker permissions, ensure that your user is added to the Docker group by checking with:
+## License
 
-   ```bash
-   groups $USER
-   ```
-
-   You should see `docker` listed in the output.
-
-For further Docker usage and configuration details, refer to the [official Docker documentation](https://docs.docker.com/).
-
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
